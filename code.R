@@ -3,10 +3,10 @@ library(lubridate)
 library(readxl)
 
 # Read in data
-weekly_hiring_ms_data <- read_excel("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2023/12.05.2023/Weekly Site Staffing Update 12-5-2023 .xlsx",
+weekly_hiring_ms_data <- read_excel("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/01.08.2024/Weekly Site Staffing Update 01_02_2024_ Updated File1.xlsx",
                                            sheet = "Hiring MS DATA")
 
-weekly_hires_terms <- read_excel("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2023/12.05.2023/Weekly Site Staffing Update 12-5-2023 .xlsx",
+weekly_hires_terms <- read_excel("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/01.08.2024/Weekly Site Staffing Update 01_02_2024_ Updated File1.xlsx",
                                         sheet = "Hires & Terms")
 
 # recap_ms <- read_excel("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/Recap of Weekly Site Staffing Updates.xlsx",
@@ -25,7 +25,7 @@ readRDS("master_data_ms_rds.rds") -> master_data_ms_rds
 
 weekly_hiring_ms_data %>%
   janitor::clean_names() %>%
-  dplyr::mutate(report_date = lubridate::dmy(report_date)) %>% 
+  dplyr::mutate(report_date = format(lubridate::ymd(report_date), "%m/%d/%Y")) %>% 
   dplyr::filter(!is.na(external_openings)) %>% 
   dplyr::rename(plant_name = plant) -> weekly_hiring_ms_data_cleaned
 
@@ -41,10 +41,20 @@ master_data_ms_rds %>%
   distinct(row_id, .keep_all = TRUE) %>%
   select(-row_id) -> master_data_ms_rds
 
+
+
 saveRDS(master_data_ms_rds, "master_data_ms_rds.rds")
 
-
-writexl::write_xlsx(master_data_ms_rds, "C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2023/12.05.2023/master_data_ms_rds.xlsx")
+weekly_hiring_ms_data_cleaned %>% 
+  dplyr::rename("Report Date" = report_date,
+                "Plant #" = plant_number,
+                "Plant Name" = plant_name,
+                "Department" = department,
+                "External Openings" = external_openings,
+                "Internal Openings" = internal_openings,
+                "Pending BG/DS" = pending_bg_ds,
+                "Filled By Temps" = filled_by_temps) %>% 
+  writexl::write_xlsx("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/01.08.2024/weekly.xlsx")
 
 
 ########## weekly_hires_terms
