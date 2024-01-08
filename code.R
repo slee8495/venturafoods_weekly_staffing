@@ -101,7 +101,16 @@ weekly_hires_terms_cleaned %>% head(15) %>% rename(Hires = Value) -> hires
 cbind(terms, hires) %>% 
   writexl::write_xlsx("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/01.08.2024/Turnover Recap.xlsx")
 
-
+# Making sure we are using the right month. 
+weekly_hires_terms %>% 
+  janitor::clean_names() %>% 
+  data.frame() %>% 
+  dplyr::mutate(across(c(1, ncol(.)), ~replace(., is.na(.), 0))) %>% 
+  dplyr::select(1, ncol(.)) %>% 
+  dplyr::pull(2) %>% 
+  head(1) %>% 
+  as.integer() %>% 
+  as.Date(origin = "1899-12-30")
 
 ##### What to do next
 # Open "ms recap.xlsx" & "Recap of Weekly Site Staffing Updates.xlsx"
@@ -111,4 +120,6 @@ cbind(terms, hires) %>%
 # Go to "Turnover Recap" Tab in the master file (Recap of Weekly Site Staffing Updates.xlsx)
 # Open "Turnover Recap.xlsx" file and copy & paste. 
 
+# Now go ahead to MicroStrategy and update the cube. 
+# https://edgeanalytics.venturafoods.com/MicroStrategyLibrary/app/DF007F1C11E9B3099BB30080EF7513D2/971A4F9F11EC4177EB3F0080EF1563A1/W81--K126/edit
 
