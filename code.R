@@ -123,3 +123,9 @@ weekly_hires_terms %>%
 # Now go ahead to MicroStrategy and update the cube. 
 # https://edgeanalytics.venturafoods.com/MicroStrategyLibrary/app/DF007F1C11E9B3099BB30080EF7513D2/971A4F9F11EC4177EB3F0080EF1563A1/W81--K126/edit
 
+
+
+
+### Manual input number in MicroStrategy
+# Weekly Stie file -> FY24 Rolling tab -> Col CG21 (example: 36.52% - make sure once a month, it's applying the right range)
+# In MictoStrategy, go to Turnover YTD -> Turnover Rate -> below Plants Turnover
