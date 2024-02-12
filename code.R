@@ -4,8 +4,8 @@ library(readxl)
 library(fs)
 
 # Define the paths
-old_dir <- "C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/01.29.2024"
-new_dir <- "C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/02.05.2024"
+old_dir <- "C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/02.05.2024"
+new_dir <- "C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/02.12.2024"
 file_name <- "Recap of Weekly Site Staffing Updates.xlsx"
 
 # Create the new directory
@@ -14,11 +14,15 @@ dir.create(new_dir)
 # Copy the file
 file.copy(file.path(old_dir, file_name), file.path(new_dir, file_name))
 
+##############################################################################################################################################################
+##############################################################################################################################################################
+##############################################################################################################################################################
+
 # Read in data
-weekly_hiring_ms_data <- read_excel("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/02.05.2024/Weekly Site Staffing Update 01-30-24.xlsx",
+weekly_hiring_ms_data <- read_excel("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/02.12.2024/Weekly Site Staffing Update 02-06-24.xlsx",
                                            sheet = "Hiring MS DATA")
 
-weekly_hires_terms <- read_excel("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/02.05.2024/Weekly Site Staffing Update 01-30-24.xlsx",
+weekly_hires_terms <- read_excel("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/02.12.2024/Weekly Site Staffing Update 02-06-24.xlsx",
                                         sheet = "Hires & Terms")
 
 # recap_ms <- read_excel("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/Recap of Weekly Site Staffing Updates.xlsx",
@@ -66,7 +70,7 @@ weekly_hiring_ms_data_cleaned %>%
                 "Internal Openings" = internal_openings,
                 "Pending BG/DS" = pending_bg_ds,
                 "Filled By Temps" = filled_by_temps) %>% 
-  writexl::write_xlsx("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/02.05.2024/ms recap.xlsx")
+  writexl::write_xlsx("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/02.12.2024/ms recap.xlsx")
 
 
 ########## weekly_hires_terms
@@ -99,7 +103,7 @@ weekly_hires_terms_cleaned %>% head(15) %>% rename(Hires = Value) -> hires
 
 
 cbind(terms, hires) %>% 
-  writexl::write_xlsx("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/02.05.2024/Turnover Recap.xlsx")
+  writexl::write_xlsx("C:/Users/slee/OneDrive - Ventura Foods/Ventura Work/SCE/Project/FY 24/Weekly Staffing/2024/02.12.2024/Turnover Recap.xlsx")
 
 # Making sure we are using the right month. 
 weekly_hires_terms %>% 
