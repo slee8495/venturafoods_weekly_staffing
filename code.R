@@ -136,5 +136,6 @@ weekly_hires_terms %>%
 ### Manual input number in MicroStrategy
 # Weekly Stie file -> FY24 Rolling tab -> Col CG21 (example: 36.52% - make sure once a month, it's applying the right range)
 # In MictoStrategy, go to Turnover YTD -> Turnover Rate -> below Plants Turnover
+# Also make sure  that all CG column is copied to "Recap.xlsx" file "Rolling 12 Month TO%" Tab correctly. 
 
 
