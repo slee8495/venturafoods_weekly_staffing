@@ -159,14 +159,14 @@ weekly_hires_terms %>%
 
 
 # In the Weekly Site File, go to "Birmingham" Tab, and check the date. 
-# Weekly file FY 24 rolling tab. make sure the formula is rolling 12 months. (CF Col)
-# Weekly CG col Copy, paste in Recap file "Rolling 12 Month TO%" Tab. 
+# Weekly file FY 25 rolling tab. make sure the formula is rolling 12 months. (AO Col)
+# Weekly AO col Copy, paste in Recap file "Rolling 12 Month TO%" Tab. 
 
 # https://edgeanalytics.venturafoods.com/MicroStrategyLibrary/app/DF007F1C11E9B3099BB30080EF7513D2/971A4F9F11EC4177EB3F0080EF1563A1/W81--K126/edit
 ### Manual input number in MicroStrategy
-# Weekly Stie file -> FY24 Rolling tab -> Col CG21 (example: 36.52% - make sure once a month, it's applying the right range)
+# Weekly Stie file -> FY25 Rolling tab -> Col AO17 (example: 36.52% - make sure once a month, it's applying the right range)
 # In MictoStrategy, go to Turnover YTD -> Turnover Rate -> below Plants Turnover
-# Also make sure  that all CG column is copied to "Recap.xlsx" file "Rolling 12 Month TO%" Tab correctly. 
+# Also make sure  that all AO column is copied to "Recap.xlsx" file "Rolling 12 Month TO%" Tab correctly. 
 
 
 # Now go ahead to MicroStrategy and update the cube. 
